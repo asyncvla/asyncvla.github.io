@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="AsyncVLA: An Asynchronous VLA for Fast and Robust Navigation on the Edge">
+    <meta name="keywords" content="asyncvla, navigation, robotics, foundation model">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AsyncVLA: An Asynchronous VLA for Fast and Robust Navigation on the Edge</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYH3N96LN5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZYH3N96LN5');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/slick.css">
+    <link rel="stylesheet" href="./static/css/slick-theme.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="static/css/custom.css">    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/slick.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://svl.stanford.edu/projects/dvmpc/">
+                            DVMPC: Deep Visual MPC-Policy Learning for Navigation
+                        </a>
+                        <a class="navbar-item" href="https://sites.google.com/view/exaug-nav">
+                            ExAug: Robot-conditioned Navigation Policies via Geometric Experience Augmentation
+                        </a>                      
+                        <a class="navbar-item" href="https://general-navigation-models.github.io/vint/index.html">
+                            ViNT: A Foundation Model for Visual Navigation
+                        </a>
+                        <a class="navbar-item" href="https://sites.google.com/view/sacson-review/home">
+                            SACSoN: Scalable Autonomous Control for Social Navigation
+                        </a>
+                        <a class="navbar-item" href="https://learning-language-navigation.github.io/">
+                            LeLaN: Learning A Language-conditioned Navigation Policy from In-the-Wild Video
+                        </a>                          
+                        <a class="navbar-item" href="https://model-base-reannotation.github.io/">
+                            Learning to Drive Anyware with Model-Based Reannotation
+                        </a>     
+                        <a class="navbar-item" href="https://omnivla-nav.github.io/">
+                            OmniVLA: An Omni-Modal Vision-Language-Action Model for Robot Navigation
+                        </a>                                                  
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">AsyncVLA: An Asynchronous VLA for Fast and Robust Navigation on the Edge</h1>                        
+                                       
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://sites.google.com/view/noriaki-hirose/">Noriaki Hirose</a><sup>1, 2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://catglossop.github.io/">Catherine Glossop</a><sup>1</sup>,
+                            </span>                            
+                            <span class="author-block">
+                                <a href="https://robodhruv.github.io/">Dhruv Shah</a><sup>3</sup>,
+                            </span>                            
+                            <span class="author-block">
+                                <a href="https://cs.berkeley.edu/~svlevine">Sergey Levine</a><sup>1</sup>
+                            </span>                            
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"> <sup>1</sup> University of California, Berkeley,   <sup>2</sup> Toyota Motor North America,   <sup>3</sup> Princeton University</span>
+                        </div>
+                        <br>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2509.19480"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                    <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                    </a>
+                                </span>                            
+                                <!-- Talk Link. -->
+                                <span class="link-block">
+                                    <a href="https://youtu.be/h9NgUQSJPQU"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>YouTube</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/NHirose/AsyncVLA"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github-alt"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <!-- Checkpoint Link-->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co/NHirose/omnivla-original"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-brain"></i>
+                                        </span>
+                                        <span>Checkpoint</span>
+                                    </a>
+                                </span>
+                                <!-- BibTex -->
+                                <span class="link-block">
+                                    <a href="./static/asyncvla.bib"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-quote-left"></i> </span>
+                                        <span>BibTex</span>
+                                    </a>
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="publication-video">
+            <video autoplay controls muted loop playsinline width="80%">
+              <source src="static/videos/tesear_video.mp4" type="video/mp4">
+            </video>          
+          </div>   
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+            Robotic foundation models achieve strong generalization by leveraging internet-scale vision-language representations, but their massive computational cost creates a fundamental bottleneck: high inference latency. In dynamic environments, this latency breaks the control loop, rendering powerful models unsafe for real-time deployment. We propose AsyncVLA, an asynchronous control framework that decouples semantic reasoning from reactive execution. Inspired by hierarchical control, AsyncVLA runs a large foundation model on a remote workstation to provide high-level guidance, while a lightweight, onboard Edge Adapter continuously refines actions at high frequency. To bridge the domain gap between these asynchronous streams, we introduce an end-to-end finetuning protocol and a trajectory re-weighting strategy that prioritizes dynamic interactions. We evaluate our approach on real-world vision-based navigation tasks with communication delays up to 6 seconds. AsyncVLA achieves a 40\% higher success rate than state-of-the-art baselines, effectively bridging the gap between the semantic intelligence of large models and the reactivity required for edge robotics.
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+
+      <!-- Paper video. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Full video</h2>
+          <div class="publication-video">
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="static/videos/full_video.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3">Approach</h2>
+          <div class="content has-text-justified has-text-centered">
+            <h3 class="title is-4">Motivation</h3>
+            <p>
+            VLAs can inherit internet-scale knowledge from VLMs, resulting in vastly superior vision and language understanding compared to those trained from scratch. However, as we massively scale up the size of our robot policies, we sacrifice inference speed, which can impact performance. In particular, increased inference latency results in longer control cycles, which manifest as time delays in the control loop that can degrade overall system performance. This paper tackles the research question: how can large robotic foundation models be deployed on the edge without being constrained by their computational cost?
+            </p>
+            <p>                        
+            The challenges associated with large-scale foundation models are especially pronounced in mobile robots. Due to the limited field of view with ego-centric camera views, mobile robots cannot fully perceive their surroundings from a given observation. With the presence of dynamic obstacles, such as pedestrians, this problem is further exacerbated.  Consequently, mobile robots must continuously update their observations while navigating and rapidly generate actions based on the most recent sensory inputs. As a result, the increasing computational burden associated with scaling robotic foundation models directly leads to performance degradation in real-world navigation tasks.           
+            </p>          
+            <h3 class="title is-4">AsyncVLA</h3>
+            <p>
+            We propose an asynchronous navigation system, AsyncVLA, that leverages the rich language and visual understanding of existing robotic foundation models, while providing for quick reactive control based on the most recent observations. To achieve such a reactive policy without sacrificing rich semantic understanding, AsyncVLA integrates three key design choices into a single system: (1) a lightweight action head, Edge Adapter that runs on board the robot, (2) automatic data re-balancing to encourage reactive behavior, and (3) end-to-end training for better aligning the base VLA and the Edge Adapter. During inference, we decouple AsyncVLA into the base VLA and the Edge Adapter. The base VLA is deployed on a workstation equipped with a high-performance GPU, while the Edge Adapter is implemented on the robot’s onboard controller to process observations without additional latency for quick reactions.
+            </p>
+            <img src="./static/images/pull.png" style="display:block; margin:auto; width:1000px; height:auto;" />               
+            <h3 class="title is-4">Network</h3>
+            <p>
+
+            
+            We build AsyncVLA on top of OmniVLA, a vision-based robotic foundation model for navigation, which serves as our base VLA. OmniVLA is a navigation policy capable of generating actions conditioned on multiple goal modalities, including 2D goal poses, language instructions, and egocentric goal images. The base VLA interprets these diverse modalities at a high level using large-scale visual encoders (SigLIP and DINOv2) and a language model (LLaMA2 7B).
+            </p>
+            <p>            
+Since the downstream Edge Adapter is responsible for action generation, we feed it the action token embeddings of OmniVLA, which encode features that represent the actions but also encode the semantic and visual information interpreted by OmniVLA. However, the embeddings produced by OmniVLA have a dimensionality of 8x4x4096, corresponding to an action chunk size of 8, an action dimension of 4, and an embedding size of 4096. Directly feeding these high-dimensional embeddings into the Edge Adapter would significantly increase the network size and computational cost in the robot's onboard controller. To address this issue, we apply a token projector with two MLP ResNet blocks to each action token, compressing its dimensionality from 4×4096 to 1024 before feeding it into the Edge Adapter. This compression enables efficient transmission of the generated token embeddings from the workstation to the robot’s onboard controller during inference.        
+            </p>
+            <img src="./static/images/AsyncVLA.png" style="display:block; margin:auto; width:500px; height:auto;" />                   
+          </div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+
+          <div class="columns is-centered">
+
+
+            <!-- Animation. -->
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <h2 class="title is-3">Experiments</h2>
+                <p>
+                  We evaluate AsyncVLA on 2D goal pose– and language-conditioned navigation tasks in challenging, cluttered indoor and outdoor environments, including settings with weak WiFi connectivity.
+                </p>                                                
+          </div>
+      </section>     
+      <section class="section">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+
+            <!-- Animation. -->
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <!--/ Interpolating. -->
+
+                <!-- Re-rendering. -->
+                <h3 class="title is-4">2D goal pose-conditioned navigation with pedestrians</h3>
+                <div class="content has-text-justified">
+                  <p>
+                  Since our AsyncVLA can react to the latest observation without delay, our AsyncVLA allows the robot to yield to the pedestrian, pass safely without collision, and then proceed toward the goal. In contrast, ``OmniVLA'', which runs inference on a workstation, suffers from delayed action updates and consequently collides with the pedestrian, failing to reach the goal.
+                  </p>                
+                
+                  <video autoplay controls muted loop playsinline width="80%"style="display: block; margin: 0 auto;">
+                    <source src="static/videos/compare_ped.mp4" type="video/mp4">
+                  </video>                                       
+                </div>
+          </div>
+      </section>
+
+    <!-- Results Carousel -->
+    <p>
+    We conducted experiments involving various interactions with the robot. The following videos present representative samples from these experiments.
+    </p>       
+    <section class="hero is-light is-small">      
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-bww1">
+                        <video poster="" id="go1_1" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/ped/nav_ped_1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-tello">
+                        <video poster="" id="d435_1" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/ped/nav_ped_4.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-soda3-left">
+                        <video poster="" id="d435_2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/ped/nav_ped_5.mp4" type="video/mp4">
+                        </video>
+                    </div>                       
+                    <div class="item item-go1-outside">
+                        <video poster="" id="height_1" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/ped/nav_ped_2.mp4" type="video/mp4">
+                        </video>
+                    </div>                
+                    <div class="item item-soda3-left">
+                        <video poster="" id="d435_2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/ped/nav_ped_3.mp4" type="video/mp4">
+                        </video>
+                    </div>                                                      
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+
+          <div class="columns is-centered">
+
+
+            <!-- Animation. -->
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <br />
+                <!--/ Interpolating. -->
+
+                <!-- Re-rendering. -->
+                <h3 class="title is-4">2D goal pose-conditioned navigation in partially occluded environments</h3>
+                <div class="content has-text-justified">
+                  <p>
+                  We evaluate the robustness of policies inferenced on the workstation under artificially introduced time delays, simulating increased latency. Specifically, we test workstation latency of 0.2 seconds, 2.0 seconds, and 5.0 seconds, while the robot’s onboard controller computes actions at its best rate, which is independent of the environment. As shown in following graph, our method outperforms OmniVLA at the lowest latency of 0.2 seconds, and this performance gap increases as the artificial latency increases. As the Edge Adapter is running on the onboard controller, it can adapt the guidance provided by the base VLA as the action token embeddings based on information provided in the current observation. In contrast, OmniVLA produces actions conditioned on stale observations, leading to degraded navigation performance as latencies increase.
+                  </p>
+                  <img src="./static/images/graph_latency.png" style="display:block; margin:auto; width:700px; height:auto;" />   
+                  <p>
+                  The following videos compare our method with the strong baseline, OmniVLA. While both methods perform well at 5 Hz inference without time delay, the baseline exhibits large overshoots and fails to navigate at 0.2 Hz inference under artificial time delay. In contrast, our AsyncVLA continues to perform reliably, as the Edge Adapter can rapidly adjust the robot’s behavior and guide it toward the goal pose.
+                  </p>                  
+                                       
+                  <video autoplay controls muted loop playsinline width="80%" style="display: block; margin: 0 auto;">
+                    <source src="static/videos/compare_oclude.mp4" type="video/mp4">
+                  </video>                         
+                  
+                </div>
+          </div>
+      </section>
+
+    <!-- Results Carousel -->
+    <p>
+    We conducted experiments in cluttered environments to navigate the robot toward goal positions up to 30 meters away. The following videos present representative samples from these experiments.
+    </p>           
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">                
+                    <div class="item item-go1-outside">
+                        <video poster="" id="height_1" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/pose/pose_nav_5.mp4" type="video/mp4">
+                        </video>
+                    </div>                 
+                    <div class="item item-soda3-left">
+                        <video poster="" id="d435_2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/pose/pose_nav_1.mp4" type="video/mp4">
+                        </video>
+                    </div>    
+                    <div class="item item-soda3-left">
+                        <video poster="" id="d435_2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/pose/pose_nav_2.mp4" type="video/mp4">
+                        </video>
+                    </div>          
+                    <div class="item item-soda3-left">
+                        <video poster="" id="d435_2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/pose/pose_nav_3.mp4" type="video/mp4">
+                        </video>
+                    </div>    
+                    <div class="item item-soda3-left">
+                        <video poster="" id="d435_2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/pose/pose_nav_4.mp4" type="video/mp4">
+                        </video>
+                    </div>                                                                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+
+          <div class="columns is-centered">
+
+
+            <!-- Animation. -->
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <br />
+                <!--/ Interpolating. -->
+
+                <!-- Re-rendering. -->
+                <h3 class="title is-4">Language-conditioned navigation</h3>
+                <div class="content has-text-justified">
+                  <p>
+                  Since AsyncVLA uses OmniVLA as its pretrained model, it can leverage its ability to map high-level language and visual understanding into actions, enabling behavior that follows language instructions effectively. In our evaluations, AsyncVLA shows robustness to out-of-distribution language instructions, resulting in performance comparable to OmniVLA.
+                  </p>
+                </div>
+          </div>
+      </section>
+
+    <!-- Results Carousel -->
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-bww1">
+                        <video poster="" id="bww1" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/lan/lan_nav_prompt_1.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-tello">
+                        <video poster="" id="tello" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/lan/lan_nav_prompt_2.mp4" type="video/mp4">
+                        </video>
+                    </div>       
+                    <div class="item item-tello">
+                        <video poster="" id="tello" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/lan/lan_nav_prompt_4.mp4" type="video/mp4">
+                        </video>
+                    </div>                                               
+                    <div class="item item-tello">
+                        <video poster="" id="tello" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/lan/lan_nav_prompt_3.mp4" type="video/mp4">
+                        </video>
+                    </div>           
+                    <div class="item item-tello">
+                        <video poster="" id="tello" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/lan/lan_nav_prompt_5.mp4" type="video/mp4">
+                        </video>
+                    </div>                                                 
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">  
+      <div class="container is-max-desktop">    
+        <h2 class="title">BibTeX</h2>
+        <pre><code> @misc{hirose2025omnivla,
+      title={AsyncVLA: An Asynchronous VLA for Fast and Robust Navigation on the Edge}, 
+      author={Noriaki Hirose and Catherine Glossop and Dhruv Shah and Sergey Levine},
+      year={2026},
+      eprint={xxxx.xxxxx},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/xxxx.xxxxx}, 
+      }</code></pre>            
+      </div>
+    </section>
+
+    <br>
+    <center class="is-size-10">
+      The website (<a href="https://github.com/asyncvla/asyncvla.github.io">source code</a>) design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
+                class="dnerf">Nerfies</span></a>.
+    </center>
+    <br>
+</body>
+
+</html>
