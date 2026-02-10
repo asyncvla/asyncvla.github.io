@@ -121,7 +121,7 @@
                                 </span>                            
                                 <!-- Talk Link. -->
                                 <span class="link-block">
-                                    <a href="https://youtu.be/h9NgUQSJPQU"
+                                    <a href="https://youtu.be/uPi5YGL4JpA"
                                         class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <i class="fab fa-youtube"></i>
@@ -324,7 +324,7 @@ Since the downstream Edge Adapter is responsible for action generation, we feed 
                 <!--/ Interpolating. -->
 
                 <!-- Re-rendering. -->
-                <h3 class="title is-4">2D goal pose-conditioned navigation in partially occluded environments</h3>
+                <h3 class="title is-4">Robustness for large delay in 2D goal pose-conditioned navigation</h3>
                 <div class="content has-text-justified">
                   <p>
                   We evaluate the robustness of policies inferenced on the workstation under artificially introduced time delays, simulating increased latency. Specifically, we test workstation latency of 0.2 seconds, 2.0 seconds, and 5.0 seconds, while the robot’s onboard controller computes actions at its best rate, which is independent of the environment. As shown in following graph, our method outperforms OmniVLA at the lowest latency of 0.2 seconds, and this performance gap increases as the artificial latency increases. As the Edge Adapter is running on the onboard controller, it can adapt the guidance provided by the base VLA as the action token embeddings based on information provided in the current observation. In contrast, OmniVLA produces actions conditioned on stale observations, leading to degraded navigation performance as latencies increase.
@@ -344,7 +344,7 @@ Since the downstream Edge Adapter is responsible for action generation, we feed 
 
     <!-- Results Carousel -->
     <p>
-    We conducted experiments in cluttered environments to navigate the robot toward goal positions up to 30 meters away. The following videos present representative samples from these experiments.
+    We conducted quantitative experiments in cluttered environments with and without pedestrians to navigate the robot toward goal positions up to 30 meters away. The following videos present representative samples without pedestrians from these experiments.
     </p>           
     <section class="hero is-light is-small">
         <div class="hero-body">
